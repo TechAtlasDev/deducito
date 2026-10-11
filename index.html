@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dedúcelo · Lab 3 · Mascota</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+  <header id="top">
+    <img class="logo" src="assets/logo.png" alt="Dedúcelo">
+    <p class="hint">Arrástrala y lánzala · clic · doble clic en el fondo · agítala · rueda para el tamaño</p>
+    <span id="moodPill"><i></i><b id="moodLabel">Normal</b></span>
+  </header>
+
+  <main id="stage">
+    <div id="floor"></div>
+    <div id="shadow"></div>
+
+    <div id="mascot" data-mood="neutral" aria-label="Mascota de Dedúcelo">
+      <div class="tilt">
+        <div class="slab"></div>
+        <div class="face">
+          <div class="eye l"><i></i></div>
+          <div class="eye r"><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="zzz"><b>z</b><b>z</b><b>Z</b></div>
+    <div id="bubble"><span></span></div>
+  </main>
+
+  <section id="dock">
+    <div class="row" id="moods"></div>
+    <div class="row">
+      <label class="toggle"><input type="checkbox" id="tChase"><span>Seguir con el cuerpo</span></label>
+      <label class="toggle"><input type="checkbox" id="tGravity" checked><span>Gravedad</span></label>
+      <label class="toggle"><input type="checkbox" id="tSound"><span>Sonido</span></label>
+      <label class="range"><span>Tamaño</span><input type="range" id="size" min="0.5" max="1.8" step="0.05" value="1"></label>
+      <button class="chip" id="bJump">Saltar <kbd>Espacio</kbd></button>
+      <button class="chip" id="bBlink">Parpadear <kbd>B</kbd></button>
+      <button class="chip" id="bTheme">Tema</button>
+      <button class="chip" id="bReset">Reiniciar <kbd>R</kbd></button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
