@@ -490,12 +490,23 @@
   /* ───────── Tamaño de ventana ───────── */
   function measure() {
     S.w = innerWidth; S.h = innerHeight;
-    S.floor = S.h - dock.offsetHeight - 40;
+    S.floor = S.h - dock.offsetHeight - (S.w < 640 ? 28 : 40);
     floorEl.style.top = S.floor + 'px';
     S.x = clamp(S.x, BASE_W * S.size / 2, S.w - BASE_W * S.size / 2);
     if (S.y > S.floor) S.y = S.floor;
   }
   window.addEventListener('resize', measure);
+  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(dock);
+
+  const dockToggle = $('#dockToggle');
+  dockToggle.addEventListener('click', () => {
+    const c = dock.classList.toggle('collapsed');
+    dockToggle.setAttribute('aria-expanded', String(!c));
+  });
+  // en pantallas pequeñas el panel arranca plegado y la mascota más chica
+  if (innerHeight < 520 || innerWidth < 640) dock.classList.add('collapsed');
+  S.size = innerHeight < 520 ? 0.55 : innerHeight < 700 ? 0.75 : 1;
+  sizeInput.value = S.size;
   measure();
   S.y = -BASE_H;
   renderMood();
